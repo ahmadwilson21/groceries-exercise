@@ -24,8 +24,14 @@ products = [
     {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
+i=0
+#x = products
+#print("+ ", products[name])
+for name in products:
+    print( products[name])
+   # print("")
 
-print(products)
+#print(products.pop())
 # pprint(products)
 
 # TODO: write some Python code here to produce the desired output

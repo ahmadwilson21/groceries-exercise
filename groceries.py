@@ -27,34 +27,68 @@ products = [
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 
-#breakpoint()
 print("--------------")
 print("THERE ARE ", len(products), " PRODUCTS")
 print("--------------")
-#breakpoint()
-#i=0
-#x = products
-#print("+ ", products[name])
-length = len(products)
-#breakpoint()
-#sort(products)
+
+length = len(products) #the number of products in the initial array
+
 products.sort(key = operator.itemgetter("name")) # this sorts the list of products by name
 
-for p in products:
-    name= p["name"]
-    price = float((p["price"]))
-    price= Decimal(price)
-    price = round(price, 2)
-    print(f"+ {(name)} (${price})")
-    #i= i+1
-   # print("")
+for p in products: # iterates through each dictionary in the list
+    name= p["name"]  # retrieves the name of each product
+    price = float((p["price"])) 
+    price= Decimal(price) # makes the price a decimal 
+    price = round(price, 2) #rounds decimal to two places
+    print(f"+ {(name)} (${price})") # prints the name & price in desired format
+   
 
-#print(products.pop())
-# pprint(products)
+
 
 # TODO: write some Python code here to produce the desired output
 
-#--------------
+# function that retrieves the department name from a dictionary
+def department_name(department): 
+    return department["department"]
+
+department_list = sorted(products, key = department_name) #sorts the list by department name
+
+new_list = [d["department"]for d in department_list] #makes a list of the department names
+new_set = list(set(new_list)) #deletes duplicates from the list of department names
+
+product_count = 0
+
+department = ""
+
+print("--------------")
+print("THERE ARE ", len(new_set), " PRODUCTS")
+print("--------------")
+
+for d in department_list:
+    #if department in new_list:
+    #    product_count = product_count + 1
+    #    duplicate = True
+    
+    if department != (d["department"].title()):
+        
+        
+        department = d["department"] # assigns the deparmtent name to a variable
+        product_count = new_list.count(department) #counts the number of times a dept name was repeated from earlier list
+        department = d["department"].title() #Makes each word in string uppercase
+      
+
+
+        #Creates the statement saying the deparment name and product count preceded by plus sign
+        statement = (f"+ {department} ({product_count}")
+        if product_count >1:
+            statement = (f"{statement} products)")
+        else:
+            statement = (f"{statement} product)")
+
+
+        print(f"{statement}")
+
+#-------------vbv cb                     -
 #THERE ARE 20 PRODUCTS:
 #--------------
 # + All-Seasons Salt ($4.99)
@@ -77,4 +111,17 @@ for p in products:
 # + Saline Nasal Mist ($16.00)
 # + Smart Ones Classic Favorites Mini Rigatoni With Vodka Cream Sauce ($6.99)
 # + Sparkling Orange Juice & Prickly Pear Beverage ($2.99)
-#
+
+#--------------
+#THERE ARE 10 DEPARTMENTS:
+#--------------
+# + Babies (1 product)
+# + Beverages (5 products)
+# + Dairy Eggs (1 product)
+# + Dry Goods Pasta (1 product)
+# + Frozen (4 products)
+# + Household (1 product)
+# + Meat Seafood (1 product)
+# + Pantry (2 products)
+# + Personal Care (2 products)
+# + Snacks (2 products)

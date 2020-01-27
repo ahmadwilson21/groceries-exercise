@@ -61,7 +61,7 @@ product_count = 0
 department = ""
 
 print("--------------")
-print("THERE ARE ", len(new_set), " PRODUCTS")
+print("THERE ARE ", len(new_set), " DEPARTMENTS")
 print("--------------")
 
 for d in department_list:
